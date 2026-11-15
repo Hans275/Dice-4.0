@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Santubong: Legenda Yang Hidup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
+<style>
+  :root { --bg:#120c08; --bg2:#1c130d; --gold:#d9a84a; --gold2:#f3d58a; --maroon:#7a1a2b; --green:#1f4a33; --cream:#f3e6c8; --muted:#c9b891; --line:rgba(217,168,74,.35); }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin:0; background:var(--bg); color:var(--cream); font-family:"Cormorant Garamond",Georgia,serif; font-size:1.2rem; line-height:1.65; overflow-x:hidden; }
+  h1,h2,h3,.cinzel { font-family:Cinzel,Georgia,serif; }
+  a { color:inherit; }
+  :focus-visible { outline:3px solid var(--gold2); outline-offset:4px; }
+
+  nav { position:fixed; top:0; left:0; right:0; z-index:20; display:flex; justify-content:space-between; align-items:center; padding:14px 28px; background:linear-gradient(#120c08ee,#120c0800); }
+  nav .brand { font-family:Cinzel,serif; font-weight:700; color:var(--gold2); letter-spacing:.08em; }
+  nav .r { display:flex; gap:22px; align-items:center; }
+  nav .r a { text-decoration:none; color:var(--cream); font-size:1rem; }
+  nav .r a:hover { color:var(--gold2); }
+  .lang { background:none; border:1px solid var(--gold); color:var(--gold2); font:600 .9rem Cinzel,serif; padding:6px 14px; border-radius:999px; cursor:pointer; }
+  .lang:hover { background:var(--gold); color:var(--bg); }
+
+  .hero { position:relative; min-height:100vh; display:grid; place-items:center; text-align:center; padding:120px 20px 80px; background:linear-gradient(#120c08aa 0%,#120c0866 40%,#120c08 100%), url(images/hero.jpg) center top/cover no-repeat; }
+  .hero-grid { width:100%; max-width:1100px; display:grid; grid-template-columns:1fr 1.5fr 1fr; gap:36px; align-items:center; animation:rise 1.2s ease both; }
+  .hero-text { text-align:center; }
+  .pf { margin:0; }
+  .pf img { display:block; width:100%; aspect-ratio:3/4; object-fit:cover; object-position:top; border-radius:999px 999px 10px 10px; border:2px solid var(--gold); box-shadow:0 0 0 6px rgba(18,12,8,.6), 0 20px 50px #000, 0 0 60px var(--glow); }
+  .pf.l { --glow:rgba(122,26,43,.85); transform:rotate(-2deg); }
+  .pf.r { --glow:rgba(31,74,51,.95); transform:rotate(2deg); }
+  .pf figcaption { text-align:center; font-family:Cinzel,serif; letter-spacing:.12em; color:var(--gold2); margin-top:16px; text-shadow:0 2px 10px #000; }
+  .hero h1 { margin:0; font-size:clamp(2.4rem,5.4vw,4.2rem); line-height:1; letter-spacing:.05em; background:linear-gradient(180deg,var(--gold2),var(--gold) 60%,#a9742a); -webkit-background-clip:text; background-clip:text; color:transparent; filter:drop-shadow(0 4px 18px #000); }
+  .hero .sub { font-family:Cinzel,serif; font-size:clamp(1.1rem,3.5vw,2rem); letter-spacing:.3em; margin:6px 0 34px; color:var(--cream); text-shadow:0 2px 12px #000; }
+  .hero .tag { color:var(--muted); font-style:italic; margin:0 0 34px; text-shadow:0 2px 10px #000; }
+  .btn { display:inline-flex; align-items:center; gap:12px; padding:15px 34px; border-radius:4px; border:1px solid var(--gold2); font:700 1rem Cinzel,serif; letter-spacing:.12em; text-decoration:none; color:#2a1706; background:linear-gradient(180deg,var(--gold2),var(--gold)); box-shadow:0 10px 30px rgba(217,168,74,.3); transition:transform .2s, box-shadow .2s; }
+  .btn:hover { transform:translateY(-3px); box-shadow:0 16px 40px rgba(217,168,74,.5); }
+  .logos { display:block; max-width:min(520px,80%); margin:44px auto 0; opacity:.9; border-radius:6px; }
+
+  /* songket divider */
+  .divider { height:18px; margin:0 auto; max-width:1000px; background:
+    linear-gradient(45deg,transparent 40%,var(--gold) 40% 60%,transparent 60%) 0 0/18px 18px,
+    linear-gradient(-45deg,transparent 40%,var(--gold) 40% 60%,transparent 60%) 0 0/18px 18px; opacity:.55; -webkit-mask:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent); mask:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent); }
+
+  section { max-width:1040px; margin:0 auto; padding:90px 24px 10px; }
+  h2 { font-size:clamp(1.7rem,4.5vw,2.6rem); text-align:center; margin:0 0 8px; color:var(--gold2); letter-spacing:.08em; }
+  .kicker { text-align:center; color:var(--muted); font-style:italic; margin:0 0 40px; }
+  .story { max-width:760px; margin:0 auto; text-align:center; }
+  .story p { margin:0 0 18px; }
+  .story .ms { color:var(--muted); font-style:italic; }
+
+  .sisters { display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+  .sister { border:1px solid var(--line); background:var(--bg2); overflow:hidden; border-radius:6px; }
+  .sister img { display:block; width:100%; aspect-ratio:4/4.6; object-fit:cover; object-position:top; }
+  .sister .body { padding:22px 24px 26px; border-top:4px solid var(--c); }
+  .sister.s1 { --c:var(--maroon); } .sister.s2 { --c:var(--green); }
+  .sister h3 { margin:0 0 2px; font-size:1.5rem; color:var(--gold2); }
+  .sister .role { color:var(--muted); font-style:italic; margin:0 0 10px; }
+  .sister p { margin:0; }
+
+  .pillars { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0; border:1px solid var(--line); border-radius:6px; }
+  .pillar { padding:28px 22px; text-align:center; border-right:1px solid var(--line); }
+  .pillar:last-child { border-right:0; }
+  .pillar .ic { font-size:2rem; color:var(--gold); display:block; margin-bottom:6px; }
+  .pillar h3 { font-size:1rem; margin:0 0 6px; color:var(--gold2); letter-spacing:.08em; }
+  .pillar p { margin:0; font-size:1.05rem; color:var(--cream); }
+
+
+  .places { display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+  .place { border:1px solid var(--line); background:var(--bg2); border-radius:6px; overflow:hidden; }
+  .place img { display:block; width:100%; aspect-ratio:1/1; object-fit:cover; }
+  .place.p2 img { object-position:center 80%; }
+  .place .credit { margin-top:12px; font-size:.9rem; font-style:italic; color:var(--muted); }
+  .place .body { padding:22px 24px 28px; border-top:4px solid var(--c); }
+  .place.p1 { --c:var(--maroon); } .place.p2 { --c:var(--green); }
+  .place h3 { margin:0 0 4px; font-size:1.4rem; color:var(--gold2); letter-spacing:.06em; }
+  .place .who { color:var(--muted); font-style:italic; margin:0 0 10px; }
+  .place p { margin:0; }
+
+  .poster { display:grid; grid-template-columns:minmax(0,340px) 1fr; gap:44px; align-items:center; }
+  .poster img { width:100%; border:1px solid var(--gold); border-radius:6px; box-shadow:0 24px 60px #000; transform:rotate(-2deg); transition:transform .3s; }
+  .poster img:hover { transform:rotate(0); }
+  .poster h2 { text-align:left; }
+
+  .adv { text-align:center; margin-bottom:30px; }
+  .adv .label, .tlabel { font-family:Cinzel,serif; font-size:.85rem; letter-spacing:.25em; color:var(--muted); display:block; margin-bottom:10px; }
+  .team { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:18px; }
+  .person { text-align:center; padding:24px 14px; border:1px solid var(--line); background:var(--bg2); border-radius:6px; transition:border-color .25s, transform .25s; }
+  .person:hover { border-color:var(--gold2); transform:translateY(-5px); }
+  .person.lead { max-width:300px; margin:0 auto; border-color:var(--gold); }
+  .av { position:relative; overflow:hidden; width:108px; height:108px; margin:0 auto 12px; border-radius:50%; display:grid; place-items:center; font:700 2.1rem Cinzel,serif; color:var(--bg); background:linear-gradient(135deg,var(--gold2),var(--gold) 60%,#a9742a); box-shadow:0 0 0 4px var(--bg),0 0 0 6px var(--gold); }
+  .av img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; }
+  .person h3 { margin:0; font-size:1rem; line-height:1.35; letter-spacing:.04em; }
+
+  .cta { text-align:center; margin:100px auto 0; max-width:900px; padding:64px 24px; border:1px solid var(--gold); border-radius:6px; background:radial-gradient(circle at 50% 0%,#4a1420 0%,transparent 70%),var(--bg2); }
+  .cta h2 { margin-bottom:10px; }
+  .cta p { margin:0 0 28px; color:var(--muted); }
+  .wrap { padding:0 24px; }
+  footer { text-align:center; color:var(--muted); font-size:1rem; padding:56px 20px 50px; }
+
+  @keyframes rise { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:none; } }
+  @media (max-width:760px) {
+    .places { grid-template-columns:1fr; }
+    .hero-grid { grid-template-columns:1fr 1fr; gap:18px; }
+    .hero-text { grid-column:1/-1; order:-1; margin-bottom:14px; }
+    .hero h1 { font-size:clamp(2.8rem,13vw,4.5rem); }
+    .pf.l, .pf.r { transform:none; }
+    .sisters, .poster { grid-template-columns:1fr; }
+    .poster img { max-width:320px; margin:0 auto; }
+    .poster h2 { text-align:center; }
+    nav .r a:not(.lang) { display:none; }
+    .pillar { border-right:0; border-bottom:1px solid var(--line); }
+  }
+  @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition:none !important; } html { scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+  <nav>
+    <span class="brand">SANTUBONG</span>
+    <div class="r">
+      <a href="#story" data-ms="Kisah" data-en="Story">Story</a>
+      <a href="#places" data-ms="Tempat" data-en="Places">Places</a>
+      <a href="#team" data-ms="Pasukan" data-en="Team">Team</a>
+      <button class="lang" id="lang" aria-label="Switch language">BM</button>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-grid">
+      <figure class="pf l">
+        <img src="images/santubong.jpg" alt="Puteri Santubong" />
+        <figcaption>Puteri Santubong</figcaption>
+      </figure>
+
+      <div class="hero-text">
+        <h1>SANTUBONG</h1>
+        <p class="sub">LEGENDA YANG HIDUP</p>
+        <a class="btn" href="https://youtu.be/54zV2vojaZI" target="_blank" rel="noopener">&#9654; <span data-ms="TONTON FILEM" data-en="WATCH THE FILM">WATCH THE FILM</span></a>
+      </div>
+
+      <figure class="pf r">
+        <img src="images/sejinjang.jpg" alt="Puteri Sejinjang" />
+        <figcaption>Puteri Sejinjang</figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <div class="divider"></div>
+
+  <section id="story">
+    <h2 data-ms="Sinopsis Projek" data-en="Project Synopsis">Project Synopsis</h2>
+    <p class="kicker" data-ms="Kisah dua beradik yang dihidupkan semula" data-en="A legend of two sisters, brought back to life">A legend of two sisters, brought back to life</p>
+    <div class="story">
+      <p data-ms="Berlatarkan lanskap indah Sarawak, Santubong: Legenda Yang Hidup mengisahkan dua beradik legenda, Puteri Santubong yang dikagumi kerana tenunannya yang halus, dan Puteri Sejinjang yang terkenal dengan kekuatannya dalam bertanam padi. Walaupun pernah hidup harmoni, kecemburuan dan keangkuhan yang kian membesar mengubah ikatan mereka menjadi persaingan pahit yang berakhir dengan konflik tragis." data-en="Set in the scenic landscapes of Sarawak, Santubong: Legenda Yang Hidup follows the legendary sisters Puteri Santubong, admired for her graceful weaving, and Puteri Sejinjang, known for her strength in cultivating rice. Though they once lived in harmony, growing jealousy and pride turned their bond into a bitter rivalry that ended in tragic conflict.">Set in the scenic landscapes of Sarawak, Santubong: Legenda Yang Hidup follows the legendary sisters Puteri Santubong, admired for her graceful weaving, and Puteri Sejinjang, known for her strength in cultivating rice. Though they once lived in harmony, growing jealousy and pride turned their bond into a bitter rivalry that ended in tragic conflict.</p>
+      <p data-ms="Melalui penceritaan sinematik, visual yang memukau dan unsur warisan budaya Sarawak, projek ini meneroka kisah persaudaraan, kecemburuan dan akibat amarah sambil memelihara cerita rakyat tempatan melalui inovasi digital." data-en="Through cinematic storytelling, striking visuals and elements of Sarawak's cultural heritage, the project explores sisterhood, jealousy and the consequences of anger, while preserving local folklore through digital innovation.">Through cinematic storytelling, striking visuals and elements of Sarawak's cultural heritage, the project explores sisterhood, jealousy and the consequences of anger, while preserving local folklore through digital innovation.</p>
+    </div>
+  </section>
+
+  <section id="places">
+    <h2 data-ms="Tempat Dalam Legenda" data-en="Places of the Legend">Places of the Legend</h2>
+    <p class="kicker" data-ms="Dua puteri yang kini menjadi lanskap Sarawak" data-en="Two princesses who became the landscape of Sarawak">Two princesses who became the landscape of Sarawak</p>
+    <div class="places">
+      <article class="place p1">
+        <img src="images/bukit.jpg" alt="Bukit Santubong rising above the Sarawak coast" />
+        <div class="body">
+          <h3>Bukit Santubong</h3>
+          <p class="who" data-ms="Puteri Santubong, sang penenun" data-en="Puteri Santubong, the weaver">Puteri Santubong, the weaver</p>
+          <p data-ms="Gunung Santubong menjulang di pesisir Sarawak. Dalam legenda, Puteri Santubong menjelma menjadi gunung ini selepas pertengkaran itu. Puncaknya yang bergerigi dikatakan parut akibat pukulan adiknya, dan dari jauh gunung ini kelihatan seperti seorang wanita yang sedang berbaring." data-en="Mount Santubong rises beside the Sarawak coast. In the legend, Puteri Santubong was transformed into this mountain after the quarrel. Its jagged peak is said to be the scar from her sister's blow, and from a distance the mountain looks like a woman lying down.">Mount Santubong rises beside the Sarawak coast. In the legend, Puteri Santubong was transformed into this mountain after the quarrel. Its jagged peak is said to be the scar from her sister's blow, and from a distance the mountain looks like a woman lying down.</p>
+        </div>
+      </article>
+      <article class="place p2">
+        <img src="images/pulau.jpg" alt="A small island in the water with a mountain behind it" />
+        <div class="body">
+          <h3>Pulau Sejinjang</h3>
+          <p class="who" data-ms="Puteri Sejinjang, sang petani padi" data-en="Puteri Sejinjang, the rice cultivator">Puteri Sejinjang, the rice cultivator</p>
+          <p data-ms="Puteri Sejinjang yang dipukul dengan alat tenun adiknya turut disumpah menjadi sebahagian daripada alam. Dalam banyak versi, beliau menjadi Gunung Sejinjang, manakala serpihan tubuhnya bertaburan ke laut menjadi pulau-pulau berhampiran Santubong seperti Pulau Kera, Pulau Satang dan Pulau Talang-Talang." data-en="Struck by her sister's weaving tool, Puteri Sejinjang was cursed to become part of the landscape too. In many tellings she became Mount Sejinjang, and the pieces of her shattered form scattered into the sea as the islands near Santubong, such as Pulau Kera, Pulau Satang and Pulau Talang-Talang.">Struck by her sister's weaving tool, Puteri Sejinjang was cursed to become part of the landscape too. In many tellings she became Mount Sejinjang, and the pieces of her shattered form scattered into the sea as the islands near Santubong, such as Pulau Kera, Pulau Satang and Pulau Talang-Talang.</p>
+          <p class="credit">Photo: Jackson Pang</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="poster">
+      <img src="images/poster.jpg" alt="Santubong: Legenda Yang Hidup official poster" />
+      <div>
+        <h2 data-ms="Poster Rasmi" data-en="Official Poster">Official Poster</h2>
+        <p data-ms="Sebuah projek inovasi digital UNIMAS yang memelihara cerita rakyat Sarawak untuk generasi baharu." data-en="A UNIMAS digital innovation project that preserves Sarawak folklore for a new generation.">A UNIMAS digital innovation project that preserves Sarawak folklore for a new generation.</p>
+        <a class="btn" href="PASTE_YOUR_VIDEO_LINK_HERE" target="_blank" rel="noopener">&#9654; <span data-ms="TONTON FILEM" data-en="WATCH THE FILM">WATCH THE FILM</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <h2 data-ms="Pasukan Projek" data-en="Project Team">Project Team</h2>
+    <p class="kicker" data-ms="Insan di sebalik legenda" data-en="The people behind the legend">The people behind the legend</p>
+    <div class="adv">
+      <span class="tlabel" data-ms="PENASIHAT PROJEK" data-en="PROJECT ADVISOR">PROJECT ADVISOR</span>
+      <div class="person lead"><div class="av"><img src="images/jonathan.jpg" alt="Ts. Jonathan Sidi" onerror="this.remove()" />J</div><h3>Ts. Jonathan Sidi</h3></div>
+    </div>
+    <span class="tlabel" style="text-align:center" data-ms="PASUKAN PROJEK" data-en="PROJECT TEAM">PROJECT TEAM</span>
+    <div class="team">
+      <div class="person"><div class="av"><img src="images/abbraham.jpg" alt="Abbraham Allen Harry" onerror="this.remove()" />A</div><h3>Abbraham Allen Harry</h3></div>
+      <div class="person"><div class="av"><img src="images/ameen.jpg" alt="Amreen Mustaqeem bin Aslan" onerror="this.remove()" />A</div><h3>Amreen Mustaqeem bin Aslan</h3></div>
+      <div class="person"><div class="av"><img src="images/nakhheuddin.jpg" alt="Nakhieuddin Farhan bin Masari" onerror="this.remove()" />N</div><h3>Nakhieuddin Farhan bin Masari</h3></div>
+      <div class="person"><div class="av"><img src="images/nickholas.jpg" alt="Nickholas David" onerror="this.remove()" />N</div><h3>Nickholas David</h3></div>
+    </div>
+  </section>
+
+  <footer>&copy; 2026 Santubong: Legenda Yang Hidup &middot; UNIMAS</footer>
+
+<script>
+  // Language switch: every element with data-en / data-ms gets swapped.
+  var isMalay = false;
+  var btn = document.getElementById("lang");
+  btn.addEventListener("click", function () {
+    isMalay = !isMalay;
+    document.documentElement.lang = isMalay ? "ms" : "en";
+    document.querySelectorAll("[data-ms]").forEach(function (el) {
+      el.textContent = el.getAttribute(isMalay ? "data-ms" : "data-en");
+    });
+    btn.textContent = isMalay ? "EN" : "BM";
+  });
+</script>
+</body>
+</html>
